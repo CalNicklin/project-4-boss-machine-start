@@ -11,7 +11,7 @@ const {
     deleteFromDatabasebyId,
     deleteAllFromDatabase,
 }
-= require('./db');
+    = require('./db');
 
 
 // '/' endpoint because /minions is already declared in api.js
@@ -21,7 +21,7 @@ minionsRouter.get('/', (req, res, next) => {
 
 // POST /api/minions to create a new minion and save it to the database.
 minionsRouter.post('/', (req, res, next) => {
-    const newMinion = addToDatabase('minion', req.body);
+    const newMinion = addToDatabase('minions', req.body);
     res.status(201).send(newMinion);
 });
 
@@ -32,9 +32,17 @@ minionsRouter.get('/:minionId', (req, res, next) => {
 
 // PUT /api/minions/:minionId to update a single minion by id.
 minionsRouter.put('/:minionsId', (req, res, next) => {
-    let updatedMinion = updateInstanceInDatabase('minions', req.params);
+    let updatedMinion = updateInstanceInDatabase('minions', req.body);
     res.send(updatedMinion);
 });
 
-
-
+// DELETE /api/minions/:minionId to delete a single minion by id.
+minionsRouter.delete('/:minionId', (req, res, next) => {
+    const minionToDelete = deleteFromDatabasebyId('minions', req.params.id);
+    if (minionToDelete) {
+        res.status(204);
+    } else {
+        res.status(500)
+    };
+    res.send(minionToDelete);
+});
