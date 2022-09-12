@@ -437,7 +437,7 @@ describe('/api/ideas routes', function() {
 
   describe('DELETE /api/ideas', function() {
     
-    it('deletes the correct minion by id', function() {
+    it('deletes the correct idea by id', function() {
       let initialIdeasArray;
       return request(app)
         .get('/api/ideas')
@@ -686,7 +686,7 @@ describe('/api/meetings routes', function() {
 
 });
 
-xdescribe('BONUS: /api/minions/:minionId/work routes', function() {
+describe('BONUS: /api/minions/:minionId/work routes', function() {
 
   let fakeDb = require('../server/db.js').db;
   

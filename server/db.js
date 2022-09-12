@@ -265,6 +265,7 @@ const deleteAllFromDatabase = (modelType) => {
 
 module.exports = {
   createMeeting,
+  createWork,
   getAllFromDatabase,
   getFromDatabaseById,
   addToDatabase,
